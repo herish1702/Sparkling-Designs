@@ -1,0 +1,222 @@
+[
+    {
+        "id": 1,
+        "name": "Kundan Royal Necklace Set",
+        "code": "KS-JEW-001",
+        "category": "jewelry",
+        "description": "Exquisite handcrafted Kundan necklace set featuring premium gold-plated detailing with uncut diamond accents. Perfect for weddings and special occasions.",
+        "material": "Gold-plated, Uncut Diamonds, Kundan Stones",
+        "colors": [
+            "Gold",
+            "Rose Gold",
+            "Silver"
+        ],
+        "sizes": [
+            "Adjustable (16-18 inches)",
+            "18 inches",
+            "20 inches"
+        ],
+        "images": [
+            "https://placehold.co/600x700/e8c97a/1a1a2e?text=Royal+Necklace+1",
+            "https://placehold.co/600x700/d4a853/1a1a2e?text=Royal+Necklace+2",
+            "https://placehold.co/600x700/b8912e/1a1a2e?text=Royal+Necklace+3"
+        ],
+        "featured": true,
+        "newArrival": true,
+        "bestSeller": true,
+        "rating": 4.9
+    },
+    {
+        "id": 2,
+        "name": "Pearl Drop Earrings",
+        "code": "KS-JEW-002",
+        "category": "jewelry",
+        "description": "Elegant pearl drop earrings with intricate gold detailing. Handcrafted to add a touch of sophistication to any ensemble.",
+        "material": "Freshwater Pearls, 22K Gold Plated",
+        "colors": [
+            "White Pearl",
+            "Golden Pearl",
+            "Pink Pearl"
+        ],
+        "sizes": [
+            "Standard",
+            "Oversized"
+        ],
+        "images": [
+            "https://placehold.co/600x700/e8c97a/1a1a2e?text=Pearl+Earrings+1",
+            "https://placehold.co/600x700/d4a853/1a1a2e?text=Pearl+Earrings+2"
+        ],
+        "featured": true,
+        "newArrival": true,
+        "bestSeller": false,
+        "rating": 4.7
+    },
+    {
+        "id": 3,
+        "name": "Gold Plated Bangles Set",
+        "code": "KS-JEW-003",
+        "category": "jewelry",
+        "description": "Set of 6 beautifully designed gold-plated bangles with traditional motifs. Lightweight yet premium quality for daily wear.",
+        "material": "22K Gold Plated, Brass Base",
+        "colors": [
+            "Gold",
+            "Matte Gold",
+            "Antique Gold"
+        ],
+        "sizes": [
+            "2.2 inches",
+            "2.4 inches",
+            "2.6 inches"
+        ],
+        "images": [
+            "https://placehold.co/600x700/e8c97a/1a1a2e?text=Bangles+Set+1",
+            "https://placehold.co/600x700/d4a853/1a1a2e?text=Bangles+Set+2"
+        ],
+        "featured": false,
+        "newArrival": false,
+        "bestSeller": true,
+        "rating": 4.8
+    },
+    {
+        "id": 4,
+        "name": "Silk Saree - Kanchipuram",
+        "code": "KS-FAB-001",
+        "category": "fabric",
+        "description": "Pure Kanchipuram silk saree with intricate zari work. Handwoven by master artisans, this saree is a timeless addition to your wardrobe.",
+        "material": "Pure Kanchipuram Silk, Real Zari",
+        "colors": [
+            "Red",
+            "Green",
+            "Blue",
+            "Purple",
+            "Gold"
+        ],
+        "sizes": [
+            "6.3 Yards",
+            "6.6 Yards"
+        ],
+        "images": [
+            "https://placehold.co/600x700/e8c97a/1a1a2e?text=Silk+Saree+1",
+            "https://placehold.co/600x700/d4a853/1a1a2e?text=Silk+Saree+2",
+            "https://placehold.co/600x700/b8912e/1a1a2e?text=Silk+Saree+3"
+        ],
+        "featured": true,
+        "newArrival": false,
+        "bestSeller": true,
+        "rating": 5.0
+    },
+    {
+        "id": 5,
+        "name": "Cotton Linen Shirt",
+        "code": "KS-FAB-002",
+        "category": "fabric",
+        "description": "Premium cotton linen shirt with a modern fit. Breathable fabric perfect for all seasons with a sophisticated finish.",
+        "material": "100% Premium Cotton Linen",
+        "colors": [
+            "White",
+            "Blue",
+            "Black",
+            "Grey",
+            "Navy"
+        ],
+        "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "images": [
+            "https://placehold.co/600x700/e8c97a/1a1a2e?text=Linen+Shirt+1",
+            "https://placehold.co/600x700/d4a853/1a1a2e?text=Linen+Shirt+2"
+        ],
+        "featured": false,
+        "newArrival": true,
+        "bestSeller": false,
+        "rating": 4.5
+    },
+    {
+        "id": 6,
+        "name": "Embroidered Lehenga",
+        "code": "KS-FAB-003",
+        "category": "fabric",
+        "description": "Stunning embroidered lehenga choli with heavy zari and sequin work. Designed for brides and special celebrations.",
+        "material": "Banarasi Silk, Zari Embroidery",
+        "colors": [
+            "Red",
+            "Maroon",
+            "Pink",
+            "Orange",
+            "Peacock Blue"
+        ],
+        "sizes": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "Custom"
+        ],
+        "images": [
+            "https://placehold.co/600x700/e8c97a/1a1a2e?text=Lehenga+1",
+            "https://placehold.co/600x700/d4a853/1a1a2e?text=Lehenga+2",
+            "https://placehold.co/600x700/b8912e/1a1a2e?text=Lehenga+3"
+        ],
+        "featured": true,
+        "newArrival": true,
+        "bestSeller": true,
+        "rating": 4.9
+    },
+    {
+        "id": 7,
+        "name": "Home Fragrance Diffuser",
+        "code": "KS-HOM-001",
+        "category": "home",
+        "description": "Luxury home fragrance diffuser with natural essential oils. Long-lasting scent that transforms your living space into a sanctuary.",
+        "material": "Natural Essential Oils, Glass Vessel, Reed Sticks",
+        "colors": [
+            "Clear Glass",
+            "Amber Glass",
+            "Black Glass"
+        ],
+        "sizes": [
+            "100ml",
+            "200ml",
+            "500ml"
+        ],
+        "images": [
+            "https://placehold.co/600x700/e8c97a/1a1a2e?text=Diffuser+1",
+            "https://placehold.co/600x700/d4a853/1a1a2e?text=Diffuser+2"
+        ],
+        "featured": false,
+        "newArrival": true,
+        "bestSeller": false,
+        "rating": 4.6
+    },
+    {
+        "id": 8,
+        "name": "Marble Serving Platter",
+        "code": "KS-HOM-002",
+        "category": "home",
+        "description": "Handcrafted natural marble serving platter with elegant gold inlay. Perfect for entertaining guests with style.",
+        "material": "Natural Marble, 24K Gold Inlay",
+        "colors": [
+            "White Marble",
+            "Black Marble",
+            "Green Marble"
+        ],
+        "sizes": [
+            "Small (10 inch)",
+            "Medium (14 inch)",
+            "Large (18 inch)"
+        ],
+        "images": [
+            "https://placehold.co/600x700/e8c97a/1a1a2e?text=Marble+Platter+1",
+            "https://placehold.co/600x700/d4a853/1a1a2e?text=Marble+Platter+2"
+        ],
+        "featured": true,
+        "newArrival": false,
+        "bestSeller": true,
+        "rating": 4.8
+    }
+]
