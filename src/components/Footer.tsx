@@ -101,8 +101,11 @@ export default function Footer() {
                 </div>
             </div>
             <div className="border-t border-white/10">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
                     <p className="text-center text-sm text-white/40">&copy; 2026 Sparkling Designs. All Rights Reserved. | Follow us on <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-[#d4a853] hover:underline">Instagram</a></p>
+                    <Link to="/admin" className="text-xs text-white/20 hover:text-white/50 transition-colors duration-200">
+                        Admin
+                    </Link>
                 </div>
             </div>
         </footer>

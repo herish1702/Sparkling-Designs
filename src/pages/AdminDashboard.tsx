@@ -3,11 +3,14 @@ import { useNavigate, Link } from 'react-router-dom';
 import { getProducts, deleteProduct } from '../utils/productsApi';
 import { Product } from '../types';
 
+const PAGE_SIZE = 20;
+
 export default function AdminDashboard() {
     const navigate = useNavigate();
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
     const [notification, setNotification] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         if (!sessionStorage.getItem('admin-auth')) {
@@ -29,6 +32,15 @@ export default function AdminDashboard() {
             setProducts(data);
             setLoading(false);
         });
+    };
+
+    const totalPages = Math.max(1, Math.ceil(products.length / PAGE_SIZE));
+    const safePage = Math.min(currentPage, totalPages);
+    const pageProducts = products.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
+    const goToPage = (page: number) => {
+        const clamped = Math.min(Math.max(1, page), totalPages);
+        setCurrentPage(clamped);
     };
 
     const handleDelete = async (id: number, name: string) => {
@@ -120,7 +132,7 @@ export default function AdminDashboard() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {products.slice(0, 50).map(product => (
+                                {pageProducts.map(product => (
                                     <tr key={product.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                                         <td className="py-3 px-4">
                                             <div className="flex items-center gap-3">
@@ -165,6 +177,58 @@ export default function AdminDashboard() {
                             </tbody>
                         </table>
                     </div>
+                    )}
+
+                    {/* Pagination */}
+                    {!loading && products.length > 0 && (
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-4 border-t border-white/10">
+                            <p className="text-white/40 text-xs">
+                                Showing {(safePage - 1) * PAGE_SIZE + 1}–{Math.min(safePage * PAGE_SIZE, products.length)} of {products.length} products
+                            </p>
+                            <div className="flex items-center gap-1.5">
+                                <button
+                                    onClick={() => goToPage(safePage - 1)}
+                                    disabled={safePage === 1}
+                                    className="px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 text-white/70 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                                >
+                                    Previous
+                                </button>
+                                {Array.from({ length: totalPages }, (_, i) => i + 1)
+                                    .filter(page =>
+                                        page === 1 ||
+                                        page === totalPages ||
+                                        Math.abs(page - safePage) <= 1
+                                    )
+                                    .reduce<(number | 'ellipsis')[]>((acc, page, idx, arr) => {
+                                        if (idx > 0 && page - arr[idx - 1] > 1) acc.push('ellipsis');
+                                        acc.push(page);
+                                        return acc;
+                                    }, [])
+                                    .map((page, idx) =>
+                                        page === 'ellipsis' ? (
+                                            <span key={`ellipsis-${idx}`} className="px-2 text-white/30 text-xs">…</span>
+                                        ) : (
+                                            <button
+                                                key={page}
+                                                onClick={() => goToPage(page)}
+                                                className={`min-w-[2.25rem] px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${page === safePage
+                                                    ? 'bg-[#d4a853] text-white'
+                                                    : 'bg-white/10 text-white/70 hover:bg-white/20'
+                                                    }`}
+                                            >
+                                                {page}
+                                            </button>
+                                        )
+                                    )}
+                                <button
+                                    onClick={() => goToPage(safePage + 1)}
+                                    disabled={safePage === totalPages}
+                                    className="px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 text-white/70 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                                >
+                                    Next
+                                </button>
+                            </div>
+                        </div>
                     )}
                 </div>
             </div>

@@ -5,16 +5,13 @@ import { INSTAGRAM_URL } from '../utils/storage';
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
-    const isAdmin = sessionStorage.getItem('admin-auth') === 'true';
 
     const links = [
         { to: '/', label: 'Home' },
         { to: '/catalog', label: 'Catalog' },
-        { to: '/admin', label: 'Admin' },
     ];
 
     const isActive = (path: string) => {
-        if (path === '/admin' && location.pathname.startsWith('/admin')) return true;
         return location.pathname === path;
     };
 
@@ -37,7 +34,7 @@ export default function Navbar() {
                                 className={`text-sm font-medium transition-colors duration-200 relative group ${isActive(link.to) ? 'text-[#d4a853]' : 'text-white/80 hover:text-white'
                                     }`}
                             >
-                                {link.label === 'Admin' && isAdmin ? 'Dashboard' : link.label}
+                                {link.label}
                                 <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#d4a853] transition-all duration-300 ${isActive(link.to) ? 'w-full' : 'w-0 group-hover:w-full'
                                     }`} />
                             </Link>
@@ -88,7 +85,7 @@ export default function Navbar() {
                             className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${isActive(link.to) ? 'text-[#d4a853] bg-[#d4a853]/10' : 'text-white/70 hover:text-white hover:bg-white/5'
                                 }`}
                         >
-                            {link.label === 'Admin' && isAdmin ? 'Dashboard' : link.label}
+                            {link.label}
                         </Link>
                     ))}
                     <a
