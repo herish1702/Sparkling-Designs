@@ -1,10 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-<<<<<<< HEAD
 import ScrollToTop from './components/ScrollToTop';
-=======
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import ProductDetail from './pages/ProductDetail';
@@ -28,10 +25,7 @@ function SupabaseConfigWarning() {
 export default function App() {
     return (
         <Router>
-<<<<<<< HEAD
             <ScrollToTop />
-=======
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
             <div className="min-h-screen flex flex-col">
                 <SupabaseConfigWarning />
                 <Navbar />

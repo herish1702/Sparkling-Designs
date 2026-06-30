@@ -3,7 +3,6 @@
 ## What changed in this update
 
 1. **Rebrand**: "Kundan Shine" → "Sparkling Designs" everywhere (navbar, footer, page titles, admin login, WhatsApp message text).
-<<<<<<< HEAD
 2. **Admin login is hardcoded**: username `9551918485`, password `Test123*`. Only these credentials work.
 3. **Contact Us (footer)**: address changed to "Velachery, Chennai - 42", email line removed.
 4. **Real shared backend (Supabase)**: products and product images now live in a Supabase database + storage bucket instead of browser `localStorage`. This is the fix for:
@@ -11,14 +10,6 @@
    - Product images not displaying
    - Changes made in Admin not being visible to other visitors
 5. **Image upload in Admin**: you can now drag-and-drop image files (or click to browse) directly in Add/Edit Product — they're uploaded to Supabase Storage automatically. The old "paste an image URL" option is still there too, as a fallback.
-=======
-2. **Contact Us (footer)**: address changed to "Velachery, Chennai - 42", email line removed.
-3. **Real shared backend (Supabase)**: products and product images now live in a Supabase database + storage bucket instead of browser `localStorage`. This is the fix for:
-   - Admin-uploaded/edited products not showing on the live site
-   - Product images not displaying
-   - Changes made in Admin not being visible to other visitors
-4. **Image upload in Admin**: you can now drag-and-drop image files (or click to browse) directly in Add/Edit Product — they're uploaded to Supabase Storage automatically. The old "paste an image URL" option is still there too, as a fallback.
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
 
 ## One-time setup you need to do
 

@@ -21,7 +21,6 @@
     animation: fadeInUp 0.8s ease forwards;
 }
 
-<<<<<<< HEAD
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -38,8 +37,6 @@
     animation: fadeIn 0.15s ease-out;
 }
 
-=======
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
 /* Smooth scrollbar */
 ::-webkit-scrollbar {
     width: 8px;

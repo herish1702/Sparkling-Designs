@@ -2,10 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { getProducts, deleteProduct } from '../utils/productsApi';
 import { Product } from '../types';
-<<<<<<< HEAD
 import ConfirmDialog from '../components/ConfirmDialog';
-=======
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
 
 const PAGE_SIZE = 20;
 
@@ -15,10 +12,7 @@ export default function AdminDashboard() {
     const [loading, setLoading] = useState(true);
     const [notification, setNotification] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-<<<<<<< HEAD
     const [pendingDelete, setPendingDelete] = useState<{ id: number; name: string } | null>(null);
-=======
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
 
     useEffect(() => {
         if (!sessionStorage.getItem('admin-auth')) {
@@ -51,7 +45,6 @@ export default function AdminDashboard() {
         setCurrentPage(clamped);
     };
 
-<<<<<<< HEAD
     const requestDelete = (id: number, name: string) => {
         setPendingDelete({ id, name });
     };
@@ -68,19 +61,6 @@ export default function AdminDashboard() {
             setNotification(`Failed to delete "${name}". Please try again.`);
         }
         setTimeout(() => setNotification(''), 4000);
-=======
-    const handleDelete = async (id: number, name: string) => {
-        if (window.confirm(`Delete "${name}"? This cannot be undone.`)) {
-            const ok = await deleteProduct(id);
-            if (ok) {
-                loadProducts();
-                setNotification(`"${name}" deleted successfully`);
-            } else {
-                setNotification(`Failed to delete "${name}". Please try again.`);
-            }
-            setTimeout(() => setNotification(''), 4000);
-        }
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
     };
 
     const handleLogout = () => {
@@ -141,16 +121,11 @@ export default function AdminDashboard() {
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 {/* Product List */}
-=======
-                {/* Product Table */}
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                 <div className="bg-white/5 rounded-2xl border border-white/10 overflow-hidden">
                     {loading ? (
                         <div className="py-16 text-center text-white/50 text-sm">Loading products...</div>
                     ) : (
-<<<<<<< HEAD
                     <>
                     {/* Mobile: card list */}
                     <div className="sm:hidden divide-y divide-white/5">
@@ -196,9 +171,6 @@ export default function AdminDashboard() {
 
                     {/* Desktop: table */}
                     <div className="hidden sm:block overflow-x-auto">
-=======
-                    <div className="overflow-x-auto">
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                         <table className="w-full text-sm">
                             <thead>
                                 <tr className="border-b border-white/10 text-white/60">
@@ -244,11 +216,7 @@ export default function AdminDashboard() {
                                                     Edit
                                                 </Link>
                                                 <button
-<<<<<<< HEAD
                                                     onClick={() => requestDelete(product.id, product.name)}
-=======
-                                                    onClick={() => handleDelete(product.id, product.name)}
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                                                     className="bg-red-500/20 hover:bg-red-500/30 text-red-400 px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
                                                 >
                                                     Delete
@@ -260,10 +228,7 @@ export default function AdminDashboard() {
                             </tbody>
                         </table>
                     </div>
-<<<<<<< HEAD
                     </>
-=======
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                     )}
 
                     {/* Pagination */}
@@ -319,7 +284,6 @@ export default function AdminDashboard() {
                     )}
                 </div>
             </div>
-<<<<<<< HEAD
 
             <ConfirmDialog
                 open={pendingDelete !== null}
@@ -330,8 +294,6 @@ export default function AdminDashboard() {
                 onConfirm={confirmDelete}
                 onCancel={() => setPendingDelete(null)}
             />
-=======
->>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
         </div>
     );
 }

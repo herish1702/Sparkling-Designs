@@ -7,11 +7,11 @@ export function generateWhatsAppUrl(
     size: string = '',
     imageUrl: string = ''
 ): string {
-    let message = `Hi Sparkling Designs,%0A%0AI am interested in the following product:%0A%0A`;
-    message += `Product Name: ${productName}%0A`;
-    message += `Product Code: ${productCode}%0A`;
-    if (color) message += `Colour: ${color}%0A`;
-    if (size) message += `Size: ${size}%0A`;
+    let message = `Hi Sparkling Designs,\n\nI am interested in the following product:\n\n`;
+    message += `Product Name: ${productName}\n`;
+    message += `Product Code: ${productCode}\n`;
+    if (color) message += `Colour: ${color}\n`;
+    if (size) message += `Size: ${size}\n`;
     if (imageUrl) {
         // Image URLs from Supabase Storage are already absolute
         // (https://...supabase.co/...). Only prepend the site origin for
@@ -19,10 +19,16 @@ export function generateWhatsAppUrl(
         const absoluteImageUrl = /^https?:\/\//i.test(imageUrl)
             ? imageUrl
             : `${window.location.origin}${imageUrl}`;
-        message += `Product Image: ${encodeURIComponent(absoluteImageUrl)}%0A`;
+        message += `Product Image: ${absoluteImageUrl}\n`;
     }
-    message += `%0APlease share pricing and ordering details.`;
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    message += `\nPlease share pricing and ordering details.`;
+
+    // Encode the ENTIRE message exactly once here. Encoding any individual
+    // piece above (e.g. the image URL) before this point would cause
+    // double-encoding once this final encodeURIComponent runs, corrupting
+    // the link (e.g. "https://" becomes "https%3A%2F%2F" as literal text
+    // instead of a working URL).
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
 export function openWhatsApp(
