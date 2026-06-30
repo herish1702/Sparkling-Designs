@@ -3,6 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getProductById, updateProduct } from '../utils/productsApi';
 import { uploadProductImages } from '../utils/imageUpload';
 import { Product } from '../types';
+<<<<<<< HEAD
+import ConfirmDialog from '../components/ConfirmDialog';
+=======
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
 
 const CATEGORIES = [
     { id: 'hair-bands', label: '3D Kundan Hair Bands' },
@@ -32,6 +36,10 @@ export default function AdminEditProduct() {
     const [colorInput, setColorInput] = useState('');
     const [sizeInput, setSizeInput] = useState('');
     const [imageInput, setImageInput] = useState('');
+<<<<<<< HEAD
+    const [confirmOpen, setConfirmOpen] = useState(false);
+=======
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
 
     useEffect(() => {
         if (!sessionStorage.getItem('admin-auth')) {
@@ -112,8 +120,15 @@ export default function AdminEditProduct() {
         }
     };
 
+<<<<<<< HEAD
+    const handleSaveClick = () => setConfirmOpen(true);
+
+    const handleSave = async () => {
+        setConfirmOpen(false);
+=======
     const handleSave = async () => {
         if (!window.confirm('Save changes to this product?')) return;
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
         setSaving(true);
         const ok = await updateProduct(product);
         setSaving(false);
@@ -138,7 +153,11 @@ export default function AdminEditProduct() {
                     </div>
                     <div className="flex gap-3">
                         <button onClick={handleCancel} className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all">Cancel</button>
+<<<<<<< HEAD
+                        <button onClick={handleSaveClick} disabled={saving || uploading} className="bg-[#d4a853] hover:bg-[#b8912e] text-white px-5 py-2 rounded-lg text-sm font-semibold transition-all disabled:opacity-50">
+=======
                         <button onClick={handleSave} disabled={saving || uploading} className="bg-[#d4a853] hover:bg-[#b8912e] text-white px-5 py-2 rounded-lg text-sm font-semibold transition-all disabled:opacity-50">
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                             {saving ? 'Saving...' : 'Save Changes'}
                         </button>
                     </div>
@@ -162,7 +181,11 @@ export default function AdminEditProduct() {
                             <label className="block text-sm font-medium text-white/80 mb-2">Category *</label>
                             <select value={product.category} onChange={e => update('category', e.target.value)}
                                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:border-[#d4a853] outline-none transition-all text-sm">
+<<<<<<< HEAD
+                                {CATEGORIES.map(c => <option key={c.id} value={c.id} className="bg-[#1a1a2e] text-white">{c.label}</option>)}
+=======
                                 {CATEGORIES.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                             </select>
                         </div>
                         <div>
@@ -238,7 +261,11 @@ export default function AdminEditProduct() {
                             {product.images.map((img, i) => (
                                 <div key={i} className="relative group">
                                     <img src={img} alt="" className="w-16 h-16 rounded-lg object-cover border border-white/10" />
+<<<<<<< HEAD
+                                    <button onClick={() => removeImage(img)} className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">&times;</button>
+=======
                                     <button onClick={() => removeImage(img)} className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">&times;</button>
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                                 </div>
                             ))}
                         </div>
@@ -312,6 +339,18 @@ export default function AdminEditProduct() {
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
+
+            <ConfirmDialog
+                open={confirmOpen}
+                title="Save changes"
+                message="Save changes to this product?"
+                confirmLabel="Save Changes"
+                onConfirm={handleSave}
+                onCancel={() => setConfirmOpen(false)}
+            />
+=======
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
         </div>
     );
 }

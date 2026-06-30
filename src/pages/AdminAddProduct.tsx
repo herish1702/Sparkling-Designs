@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { addProduct, generateProductCode } from '../utils/productsApi';
 import { uploadProductImages } from '../utils/imageUpload';
 import { Product } from '../types';
+<<<<<<< HEAD
+import ConfirmDialog from '../components/ConfirmDialog';
+=======
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
 
 const CATEGORIES = [
     { id: 'hair-bands', label: '3D Kundan Hair Bands' },
@@ -77,9 +81,21 @@ export default function AdminAddProduct() {
         }
     };
 
+<<<<<<< HEAD
+    const [confirmOpen, setConfirmOpen] = useState(false);
+
+    const handleSaveClick = () => {
+        if (!validate()) return;
+        setConfirmOpen(true);
+    };
+
+    const handleSave = async () => {
+        setConfirmOpen(false);
+=======
     const handleSave = async () => {
         if (!validate()) return;
         if (!window.confirm('Add this product to the catalog?')) return;
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
         setSaving(true);
 
         const code = await generateProductCode(form.category);
@@ -150,7 +166,11 @@ export default function AdminAddProduct() {
                             <label className="block text-sm font-medium text-white/80 mb-2">Category *</label>
                             <select value={form.category} onChange={e => update('category', e.target.value)}
                                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:border-[#d4a853] outline-none transition-all text-sm">
+<<<<<<< HEAD
+                                {CATEGORIES.map(c => <option key={c.id} value={c.id} className="bg-[#1a1a2e] text-white">{c.label}</option>)}
+=======
                                 {CATEGORIES.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                             </select>
                         </div>
                         <div>
@@ -221,7 +241,11 @@ export default function AdminAddProduct() {
                             {form.images.map((img, i) => (
                                 <div key={i} className="relative group">
                                     <img src={img} alt="" className="w-16 h-16 rounded-lg object-cover border border-white/10" />
+<<<<<<< HEAD
+                                    <button onClick={() => update('images', form.images.filter((_, j) => j !== i))} className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">&times;</button>
+=======
                                     <button onClick={() => update('images', form.images.filter((_, j) => j !== i))} className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">&times;</button>
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                                 </div>
                             ))}
                         </div>
@@ -283,12 +307,28 @@ export default function AdminAddProduct() {
                         </div>
                     </div>
 
+<<<<<<< HEAD
+                    <button onClick={handleSaveClick} disabled={saving || uploading}
+=======
                     <button onClick={handleSave} disabled={saving || uploading}
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                         className="w-full bg-[#d4a853] hover:bg-[#b8912e] text-white py-3.5 rounded-xl text-sm font-semibold transition-all duration-200 disabled:opacity-50">
                         {saving ? 'Adding Product...' : 'Add Product to Catalog'}
                     </button>
                 </div>
             </div>
+<<<<<<< HEAD
+
+            <ConfirmDialog
+                open={confirmOpen}
+                title="Add product"
+                message="Add this product to the catalog?"
+                confirmLabel="Add Product"
+                onConfirm={handleSave}
+                onCancel={() => setConfirmOpen(false)}
+            />
+=======
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
         </div>
     );
 }

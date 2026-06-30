@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { getProducts, deleteProduct } from '../utils/productsApi';
 import { Product } from '../types';
+<<<<<<< HEAD
+import ConfirmDialog from '../components/ConfirmDialog';
+=======
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
 
 const PAGE_SIZE = 20;
 
@@ -11,6 +15,10 @@ export default function AdminDashboard() {
     const [loading, setLoading] = useState(true);
     const [notification, setNotification] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
+<<<<<<< HEAD
+    const [pendingDelete, setPendingDelete] = useState<{ id: number; name: string } | null>(null);
+=======
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
 
     useEffect(() => {
         if (!sessionStorage.getItem('admin-auth')) {
@@ -43,6 +51,24 @@ export default function AdminDashboard() {
         setCurrentPage(clamped);
     };
 
+<<<<<<< HEAD
+    const requestDelete = (id: number, name: string) => {
+        setPendingDelete({ id, name });
+    };
+
+    const confirmDelete = async () => {
+        if (!pendingDelete) return;
+        const { id, name } = pendingDelete;
+        setPendingDelete(null);
+        const ok = await deleteProduct(id);
+        if (ok) {
+            loadProducts();
+            setNotification(`"${name}" deleted successfully`);
+        } else {
+            setNotification(`Failed to delete "${name}". Please try again.`);
+        }
+        setTimeout(() => setNotification(''), 4000);
+=======
     const handleDelete = async (id: number, name: string) => {
         if (window.confirm(`Delete "${name}"? This cannot be undone.`)) {
             const ok = await deleteProduct(id);
@@ -54,6 +80,7 @@ export default function AdminDashboard() {
             }
             setTimeout(() => setNotification(''), 4000);
         }
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
     };
 
     const handleLogout = () => {
@@ -114,12 +141,64 @@ export default function AdminDashboard() {
                     </div>
                 </div>
 
+<<<<<<< HEAD
+                {/* Product List */}
+=======
                 {/* Product Table */}
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                 <div className="bg-white/5 rounded-2xl border border-white/10 overflow-hidden">
                     {loading ? (
                         <div className="py-16 text-center text-white/50 text-sm">Loading products...</div>
                     ) : (
+<<<<<<< HEAD
+                    <>
+                    {/* Mobile: card list */}
+                    <div className="sm:hidden divide-y divide-white/5">
+                        {pageProducts.map(product => (
+                            <div key={product.id} className="p-4">
+                                <div className="flex items-start gap-3">
+                                    <div className="w-14 h-14 rounded-lg bg-white/10 overflow-hidden flex-shrink-0">
+                                        <img src={product.images[0]} alt="" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-white font-medium text-sm truncate">{product.name}</p>
+                                        <p className="text-white/40 font-mono text-xs mt-0.5">{product.code}</p>
+                                        <div className="flex items-center gap-2 mt-1.5 flex-wrap">
+                                            <span className="bg-[#d4a853]/10 text-[#d4a853] text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase">
+                                                {product.category}
+                                            </span>
+                                            <span className="text-white font-semibold text-sm">{product.price}</span>
+                                        </div>
+                                        <div className="flex gap-1 flex-wrap mt-1.5">
+                                            {product.featured && <span className="bg-blue-500/20 text-blue-400 text-[10px] px-1.5 py-0.5 rounded">Featured</span>}
+                                            {product.newlyAdded && <span className="bg-green-500/20 text-green-400 text-[10px] px-1.5 py-0.5 rounded">New</span>}
+                                            {product.bestSeller && <span className="bg-[#e94560]/20 text-[#e94560] text-[10px] px-1.5 py-0.5 rounded">Best</span>}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-2 mt-3">
+                                    <Link
+                                        to={`/admin/edit/${product.id}`}
+                                        className="flex-1 text-center bg-[#d4a853]/20 hover:bg-[#d4a853]/30 text-[#d4a853] px-3 py-2 rounded-lg text-xs font-medium transition-all"
+                                    >
+                                        Edit
+                                    </Link>
+                                    <button
+                                        onClick={() => requestDelete(product.id, product.name)}
+                                        className="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 px-3 py-2 rounded-lg text-xs font-medium transition-all"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Desktop: table */}
+                    <div className="hidden sm:block overflow-x-auto">
+=======
                     <div className="overflow-x-auto">
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                         <table className="w-full text-sm">
                             <thead>
                                 <tr className="border-b border-white/10 text-white/60">
@@ -165,7 +244,11 @@ export default function AdminDashboard() {
                                                     Edit
                                                 </Link>
                                                 <button
+<<<<<<< HEAD
+                                                    onClick={() => requestDelete(product.id, product.name)}
+=======
                                                     onClick={() => handleDelete(product.id, product.name)}
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                                                     className="bg-red-500/20 hover:bg-red-500/30 text-red-400 px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
                                                 >
                                                     Delete
@@ -177,6 +260,10 @@ export default function AdminDashboard() {
                             </tbody>
                         </table>
                     </div>
+<<<<<<< HEAD
+                    </>
+=======
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
                     )}
 
                     {/* Pagination */}
@@ -232,6 +319,19 @@ export default function AdminDashboard() {
                     )}
                 </div>
             </div>
+<<<<<<< HEAD
+
+            <ConfirmDialog
+                open={pendingDelete !== null}
+                title="Delete product"
+                message={pendingDelete ? `Delete "${pendingDelete.name}"? This cannot be undone.` : ''}
+                confirmLabel="Delete"
+                danger
+                onConfirm={confirmDelete}
+                onCancel={() => setPendingDelete(null)}
+            />
+=======
+>>>>>>> c17bb6e9678f3071a714cacfd212991783d7f4b9
         </div>
     );
 }

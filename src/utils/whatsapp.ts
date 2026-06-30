@@ -12,7 +12,15 @@ export function generateWhatsAppUrl(
     message += `Product Code: ${productCode}%0A`;
     if (color) message += `Colour: ${color}%0A`;
     if (size) message += `Size: ${size}%0A`;
-    if (imageUrl) message += `Product Image: ${window.location.origin}${imageUrl}%0A`;
+    if (imageUrl) {
+        // Image URLs from Supabase Storage are already absolute
+        // (https://...supabase.co/...). Only prepend the site origin for
+        // legacy relative paths (e.g. "/images/products_raw/...").
+        const absoluteImageUrl = /^https?:\/\//i.test(imageUrl)
+            ? imageUrl
+            : `${window.location.origin}${imageUrl}`;
+        message += `Product Image: ${encodeURIComponent(absoluteImageUrl)}%0A`;
+    }
     message += `%0APlease share pricing and ordering details.`;
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 }
